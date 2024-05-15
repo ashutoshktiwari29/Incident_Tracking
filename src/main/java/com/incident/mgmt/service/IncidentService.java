@@ -1,6 +1,6 @@
-package com.incident.onboarding.service;
+package com.incident.mgmt.service;
 
-public interface OboardingService {
+public interface IncidentService {
 	
 	public String getIncidentDetails();
 	

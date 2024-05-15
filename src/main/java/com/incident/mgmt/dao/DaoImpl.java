@@ -1,9 +1,9 @@
-package com.incident.onboarding.dao;
+package com.incident.mgmt.dao;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class OnboadingDaoImpl implements OnboardingDao{
+public class DaoImpl implements Dao{
 
 	public String getIncidentDetails() {
 		// TODO Auto-generated method stub

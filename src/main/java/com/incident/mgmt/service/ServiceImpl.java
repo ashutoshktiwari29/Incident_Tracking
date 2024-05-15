@@ -1,15 +1,17 @@
-package com.incident.onboarding.service;
+package com.incident.mgmt.service;
+
+import java.lang.annotation.Annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.incident.onboarding.dao.OnboardingDao;
+import com.incident.mgmt.dao.Dao;
 
 @Service
-public class OboardingServiceImpl implements OboardingService{
+public class ServiceImpl implements IncidentService{
 
 	@Autowired
-	private OnboardingDao dao;
+	private Dao dao;
 	
 	@Override
 	public String getIncidentDetails() {
@@ -40,4 +42,6 @@ public class OboardingServiceImpl implements OboardingService{
 		// TODO Auto-generated method stub
 		return dao.getIncidentDetailsTest3();
 }
+
+
 }

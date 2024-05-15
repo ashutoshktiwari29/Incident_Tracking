@@ -1,6 +1,6 @@
-package com.incident.onboarding.dao;
+package com.incident.mgmt.dao;
 
-public interface OnboardingDao {
+public interface Dao {
 	
 	public String getIncidentDetails();
 	

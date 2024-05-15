@@ -1,4 +1,4 @@
-package com.incident.onboarding.entity;
+package com.incident.mgmt.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
