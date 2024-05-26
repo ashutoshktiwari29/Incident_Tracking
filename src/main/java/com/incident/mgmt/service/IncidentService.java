@@ -1,14 +1,15 @@
 package com.incident.mgmt.service;
 
+import java.util.List;
+
+import com.incident.mgmt.entity.Ticket;
+
 public interface IncidentService {
-	
-	public String getIncidentDetails();
-	
-	public String getIncidentDetailsTest();
-	
-	public String getIncidentDetailsTest1();
-	
-	public String getIncidentDetailsTest2();
-	public String getIncidentDetailsTest3();
+
+	public String addTicket(Ticket ticket);
+
+	public String updateTicket(Ticket ticket);
+
+	public List<Ticket> getTicketPage(int limit, int skip, Long userId, Long merchantId);
 
 }
