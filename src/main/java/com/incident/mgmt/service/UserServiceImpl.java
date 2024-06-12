@@ -1,24 +1,30 @@
 package com.incident.mgmt.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.incident.mgmt.dao.MerchantDao;
 import com.incident.mgmt.dao.UserDao;
 import com.incident.mgmt.entity.Login;
+import com.incident.mgmt.entity.Merchant_details;
 import com.incident.mgmt.entity.User;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserDao userRepo;
+	
+	@Autowired
+	MerchantDao merchantRepo;
 
 	@Override
-	public String addUser(User user) {
+	public Object addUser(User user) {
 		// TODO Auto-generated method stub
 		//Check email and mobile no.
 		if((userRepo.findUserByEmailORMobile(user.getMobile(),user.getEmail())).size()==0){
-			return userRepo.save(user).toString();
+			return userRepo.save(user);
 		}else {
 			return "Mobile or Email already in used, Please provide Unique Mobile,Email OR try to login";
 		}
@@ -51,7 +57,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String login(Login login) {
+	public User login(Login login) {
 		// TODO Auto-generated method stub
 		Optional<User> oldRecord = null;
 		if(login.getEmail()!=null && login.getEmail().trim()!=null) {
@@ -63,9 +69,24 @@ public class UserServiceImpl implements UserService {
 		if(oldRecord.isPresent()) {
 			User user=oldRecord.get();
 			user.setPassword(null);
-			return user.toString();
+			if(user.getType().equalsIgnoreCase("merchant")) {
+//				List<Merchant_details> merchant=merchantRepo.findMerchantrById(user.getId());
+//				if(merchant!=null) {
+//
+//					user.setMerchant(merchant.get(0));
+//				}
+			Merchant_details mu=new Merchant_details();
+			mu.setMerchant_id(1);
+			mu.setMerchant_name("test");
+
+			user.setMerchant(mu);
+			}
+			System.out.println(user.toString());
+			return user;
 		}
-		return "Please provide valid credentials";
+		//return "Please provide valid credentials";
+		return null;
+		
 	}
 
 }

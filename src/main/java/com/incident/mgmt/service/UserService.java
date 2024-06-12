@@ -5,10 +5,10 @@ import com.incident.mgmt.entity.User;
 
 public interface UserService {
 
-	public String addUser(User user);
+	public Object addUser(User user);
 
-	public String updateUser(User user);
+	public Object updateUser(User user);
 
-	public String login(Login login);
+	public User login(Login login);
 
 }

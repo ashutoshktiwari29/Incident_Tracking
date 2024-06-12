@@ -15,16 +15,18 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="ticket")
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Ticket {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long ticketId;
-	@Column(name = "resolverUserId", nullable = false)
 	private Long resolverUserId;
 	@Column(name = "createrUserId", nullable = false)
 	private Long createrUserId;

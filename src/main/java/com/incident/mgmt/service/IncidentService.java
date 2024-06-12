@@ -6,9 +6,9 @@ import com.incident.mgmt.entity.Ticket;
 
 public interface IncidentService {
 
-	public String addTicket(Ticket ticket);
+	public Object addTicket(Ticket ticket);
 
-	public String updateTicket(Ticket ticket);
+	public Object updateTicket(Ticket ticket);
 
 	public List<Ticket> getTicketPage(int limit, int skip, Long userId, Long merchantId);
 

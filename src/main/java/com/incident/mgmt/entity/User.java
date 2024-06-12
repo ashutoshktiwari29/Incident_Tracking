@@ -18,6 +18,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Entity
@@ -56,6 +59,7 @@ public class User {
 	private Date regDate;
     
     @OneToOne(mappedBy = "user")
+  //  @JsonIgnore
     private Merchant_details merchant;
 
 

@@ -22,5 +22,9 @@ public interface MerchantDao extends CrudRepository<Merchant_details,Long > {
 	@Modifying
 	@Query("update Merchant_details u set u.merchant_name = :merchant_name where u.merchant_id=:merchant_id")
 	void upadteMerchantrName(@Param("merchant_name") String merchant_name, @Param("merchant_id") Long merchant_id);
+	
+//	@Query("from Merchant_details m where m.user_id=:user_id")
+//	List<Merchant_details> findMerchantrById(@Param("user_id") long user_id);
+	
 
 }

@@ -3,6 +3,7 @@ package com.incident.mgmt.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.incident.mgmt.service.UserService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
@@ -22,20 +24,19 @@ public class UserController {
 	
 	@PostMapping("/add")
 	ResponseEntity<?> addUser(@RequestBody User user){		
-		String res=userService.addUser(user);
+		Object res=userService.addUser(user);
 	    return new ResponseEntity<>(res, HttpStatus.OK);
 			
 	}
-	
 	@PutMapping("/update")
 	ResponseEntity<?> updateUser(@RequestBody User user){
-		String res=userService.updateUser(user);
+		Object res=userService.updateUser(user);
 	    return new ResponseEntity<>(res, HttpStatus.OK);			
 	}
-	
 	@PostMapping("/login")
+	@CrossOrigin(origins = "http://localhost:4200")
 	ResponseEntity<?> login(@RequestBody Login login){
-		String res=userService.login(login);
+		User res=userService.login(login);
 	    return new ResponseEntity<>(res, HttpStatus.OK);						
 	}
 

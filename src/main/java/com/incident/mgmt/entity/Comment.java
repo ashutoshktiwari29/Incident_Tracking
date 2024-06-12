@@ -2,6 +2,8 @@ package com.incident.mgmt.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Comment {
 	
 	private int id;

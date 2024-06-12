@@ -27,7 +27,7 @@ public class IncidentServiceImpl implements IncidentService{
 	private MerchantDao merchant_user;
 
 	@Override
-	public String addTicket(Ticket ticket) {
+	public Object addTicket(Ticket ticket) {
 		// TODO Auto-generated method stub
 		//Check userId.
 		Optional<User> userDeatial=user.findById(ticket.getCreaterUserId());
@@ -38,11 +38,11 @@ public class IncidentServiceImpl implements IncidentService{
 		if(!merchent.isPresent()) {
 			return "Merchant not present, invalid merchent id";
 		}
-		return dao.save(ticket).toString();
+		return dao.save(ticket);
 	}
 
 	@Override
-	public String updateTicket(Ticket ticket) {
+	public Object updateTicket(Ticket ticket) {
 		// TODO Auto-generated method stub
 		//Check userId.
 		Optional<Ticket> dbTicket=dao.findById(ticket.getTicketId());
@@ -60,13 +60,17 @@ public class IncidentServiceImpl implements IncidentService{
 		Ticket oldticket=dbTicket.get();
 		oldticket.setDescription(ticket.getDescription());
 		oldticket.setTitle(ticket.getTitle());
+		oldticket.setStatus(ticket.getStatus());
 
-		return dao.save(oldticket).toString();
+		return dao.save(oldticket);
 	}
 
 	@Override
 	public List<Ticket> getTicketPage(int limit, int skip, Long userId, Long merchantId) {
 		// TODO Auto-generated method stub
+		if(merchantId==null ) {
+			return dao.findListTicketsForUser(userId, limit, skip);
+		}
 		return dao.findListTickets(merchantId, userId, limit, skip);
 		
 	}
